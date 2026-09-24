@@ -1,6 +1,6 @@
 module github.com/sagernet/quic-go
 
-go 1.25.0
+go 1.27.1
 
 require (
 	github.com/quic-go/qpack v0.6.0
