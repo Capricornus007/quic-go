@@ -200,9 +200,14 @@ func (c *utlsQUICConn) NextEvent() tls.QUICEvent {
 		out.Kind = tls.QUICRejectedEarlyData
 	case utls.QUICHandshakeDone:
 		out.Kind = tls.QUICHandshakeDone
+	case utls.QUICErrorEvent:
+		// uTLS now emits this when the handshake fails (see UQUICConn.NextEvent).
+		// Must be handled here: falling through to default panics the process.
+		out.Kind = tls.QUICErrorEvent
+		out.Err = ev.Err
 	default:
 		// QUICStoreSession and QUICResumeSession carry a *utls.SessionState that
-		// cannot be converted. They only fire when EnableSessionEvents is set,
+		// cannot be converted. QUICErrorEvent is handled above. They only fire when EnableSessionEvents is set,
 		// which newUTLSQUICClient never does, so reaching this is a bug.
 		panic(fmt.Sprintf("handshake BUG: unexpected uTLS QUIC event kind %d", ev.Kind))
 	}
