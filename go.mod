@@ -1,6 +1,6 @@
 module github.com/sagernet/quic-go
 
-go 1.27.1
+go 1.28
 
 require (
 	github.com/metacubex/utls v1.8.7
