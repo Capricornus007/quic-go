@@ -28,4 +28,4 @@ tool (
 	go.uber.org/mock/mockgen
 )
 
-replace github.com/metacubex/utls => github.com/Capricornus007/utls v1.8.8-0.20261023032810-2c28a526ca61
+replace github.com/metacubex/utls => github.com/Capricornus007/utls v1.8.8-0.20261101060137-a184786f1b8a
